@@ -1,0 +1,79 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Enhanced Progress Bar</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            justify-content: center;
+            height: 100vh;
+            margin: 0;
+            background-color: #f0f0f0;
+        }
+
+        .progress-container {
+            width: 80%;
+            background-color: #e0e0e0;
+            border-radius: 10px;
+            overflow: hidden;
+            box-shadow: 0 0 5px rgba(0, 0, 0, 0.2);
+            margin-bottom: 20px;
+        }
+
+        .progress-bar {
+            width: 0; /* Initial width */
+            height: 30px;
+            background-color: #4caf50;
+            text-align: center;
+            line-height: 30px;
+            color: white;
+            transition: width 0.4s ease;
+        }
+
+        .controls {
+            display: flex;
+            align-items: center;
+        }
+
+        .controls input[type="range"] {
+            margin: 0 10px;
+        }
+
+        .controls span {
+            font-size: 1.2em;
+            font-weight: bold;
+        }
+    </style>
+</head>
+<body>
+
+<div class="progress-container">
+    <div class="progress-bar" id="progress-bar">0%</div>
+</div>
+
+<div class="controls">
+    <label for="progress-range">Set Progress: </label>
+    <input type="range" id="progress-range" min="0" max="100" value="0">
+    <span id="progress-percentage">0%</span>
+</div>
+
+<script>
+    const progressBar = document.getElementById('progress-bar');
+    const progressRange = document.getElementById('progress-range');
+    const progressPercentage = document.getElementById('progress-percentage');
+
+    progressRange.addEventListener('input', (e) => {
+        const value = e.target.value;
+        progressBar.style.width = value + '%';
+        progressBar.textContent = value + '%';
+        progressPercentage.textContent = value + '%';
+    });
+</script>
+
+</body>
+</html>
